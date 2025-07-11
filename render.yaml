@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: la-colonia
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    branch: main
+    buildFilter:
+      paths:
+        - Dockerfile
+        - render.yaml
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: (usa `php artisan key:generate --show`)
+      - key: APP_DEBUG
+        value: false
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: tu-host
+      - key: DB_PORT
+        value: 3306
+      - key: DB_DATABASE
+        value: tiendita
+      - key: DB_USERNAME
+        value: root
+      - key: DB_PASSWORD
+        value:
